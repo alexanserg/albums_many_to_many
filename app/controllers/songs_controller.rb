@@ -10,6 +10,7 @@ class SongsController < ApplicationController
     @album = Album.find(params[:album_id])
     @song = @album.songs.new(song_params)
     if @song.save
+      flash[:notice] = "Song successfully created!"
       redirect_to album_path(@album)
     else
       render :new
@@ -25,12 +26,14 @@ class SongsController < ApplicationController
   def edit
     @album = Album.find(params[:album_id])
     @song = Song.find(params[:id])
+    flash[:notice] = "Song successfully edited!"
     render :edit
   end
 
   def update
     @song = Song.find(params[:id])
     if @song.update(song_params)
+      flash[:notice] = "Song successfully updated!"
       redirect_to album_path(@song.album)
     else
       render :edit
@@ -40,6 +43,7 @@ class SongsController < ApplicationController
   def destroy
     @song = Song.find(params[:id])
     @song.destroy
+    flash[:notice] = "Song successfully destroyed!"
     redirect_to album_path(@song.album)
   end
 
