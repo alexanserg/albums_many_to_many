@@ -38,7 +38,6 @@ class AlbumsController < ApplicationController
     #if a parameter came in that includes artist name
     if params[:artist_name]
       #make a new artist object, using the album object, and set its name to the string
-
       artist = @album.artists.new(:name => params[:artist_name])
       #this will be applied below at @album.update
     end
