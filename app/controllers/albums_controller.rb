@@ -28,11 +28,20 @@ class AlbumsController < ApplicationController
 
   def show
     @album = Album.find(params[:id])
+    @artists = @album.artists
     render :show
   end
 
   def update
     @album = Album.find(params[:id])
+    # this is making the artist - album association work
+    #if a parameter came in that includes artist name
+    if params[:artist_name]
+      #make a new artist object, using the album object, and set its name to the string
+
+      artist = @album.artists.new(:name => params[:artist_name])
+      #this will be applied below at @album.update
+    end
     if @album.update(album_params)
       flash[:notice] = "Album successfully updated!"
       redirect_to albums_path

@@ -1,6 +1,8 @@
 <h1><%= @album.name %></h1>
 <h3><%= @album.genre %></h3>
-
+<% if @artists.any? %>
+  <h1>Yes! There is an artist!</h1>
+<%end%>
 <% if @album.songs.any? %>
   <h4>Here are the songs for this album:</h4>
 

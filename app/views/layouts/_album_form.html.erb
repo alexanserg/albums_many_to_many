@@ -5,5 +5,9 @@
   <%= f.text_field :name %>
   <%= f.label :genre %>
   <%= f.text_field :genre %>
+  <%= label_tag("Add An Artist")%>
+  <%= text_field_tag :artist_name %>
   <%= f.submit %>
 <% end %>
+
+<%= link_to("Go Back To Album Details", album_path)%>
