@@ -14,3 +14,16 @@ Album.destroy_all
 end
 
 p "Created #{Album.count} albums"
+
+Song.destroy_all
+
+@albums = Album.all
+@albums.each do |album|
+  10.times do |index|
+    Song.create!(name: Faker::Lorem.words.join(" "),
+                  lyrics: Faker::Lorem.paragraphs(number: 5).join(" "),
+                  album_id: album.id)
+  end
+end
+
+p "Created #{Song.count} songs"
