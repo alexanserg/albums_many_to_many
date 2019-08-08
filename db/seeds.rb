@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Album.destroy_all
+
+50.times do |index|
+  Album.create!(name: Faker::Music.unique.album,
+                genre: Faker::Music.genre,
+                year: Faker::Number.within(range: 1960..2012))
+end
+
+p "Created #{Album.count} albums"
